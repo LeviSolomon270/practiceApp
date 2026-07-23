@@ -18,10 +18,11 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+  welcomeTxt: {
+    paddingTop: 50,
+    color: 'blue',
+    fontSize: 30,
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
 });
