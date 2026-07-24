@@ -45,5 +45,9 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
     marginBottom: 20,
+
+InputFlex: 1,
+flexDirection: 'row',
+marginTop: 20,
   },
 });
