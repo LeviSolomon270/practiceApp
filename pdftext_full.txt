@@ -1,0 +1,408 @@
+--- MAST5112_Lecture_1S_V2.pdf ---
+pages 24
+PAGE 1
+Mobile App Scripting
+MAST5112
+---
+PAGE 2
+But First...REFERENCING!!!
+
+---
+PAGE 3
+AI Disclosure
+
+---
+PAGE 4
+What you Need Installed
+•Visual Studio Code (blue, NOT purple)
+•Node.js
+•Extensions in VSCode :
+React Native Tools
+Live Server
+Prettier
+Quokka.js
+---
+PAGE 5
+
+---
+PAGE 6
+Assessments
+
+---
+PAGE 7
+
+---
+PAGE 8
+Kotlin Recap
+•First semester we learnt that Kotlin is 
+used to develop Android apps.
+•How do you think big apps like 
+Instagram or Uber Eats end up having 
+identical apps on Android and iOS 
+despite developing for two different 
+operating systems?
+
+---
+PAGE 9
+How do they do it?•Cross platform development!
+•We use frameworks like React Native to 
+develop one codebase for two apps.
+•React Native is the framework we will be 
+using this semester with Typescript as the 
+language.
+---
+PAGE 10
+Kotlin vs TypeScript
+Kotlin is a statically -typed, cross -platform, multi -purpose 
+programming language with type inference.
+TypeScript is a strongly typed programming language that 
+extends JavaScript. This means that the app won’t compile if 
+you have type(variable) errors.
+---
+PAGE 11
+Why TypeScript over JavaScript?
+When building large apps , relying on standard error checking 
+in JavaScript can lead to unexpected issues.
+With TypeScript’s strong typing, it is harder to write bad code.
+---
+PAGE 12
+React Native•When looking up tutorials or help online, 
+ensure you are looking at resources for 
+React Native, not just React.
+•React is a web framework used to make 
+websites, React Native is used for 
+developing mobile applications.
+•Don’t confuse the two!
+---
+PAGE 13
+TypeScript code
+
+---
+PAGE 14
+Different ways of 
+assigning a variable
+
+---
+PAGE 15
+Setting up React Native
+We will use Expo, a
+tool that gives us the
+necessary libraries 
+and components to 
+develop a basic app.
+It is especially useful 
+at setting things up 
+quickly.
+---
+PAGE 16
+Install Process
+Open up VS Code
+Android Studio is also required to run the emulator
+Lastly, we need Node.js installed.
+All of these should already be installed on your VM. Refer to module 
+manual to install on personal device.
+---
+PAGE 17
+VS Code Setup
+VS Code is super customisable . Do some research, make it your own.
+
+---
+PAGE 18
+Create a project folder 
+–Then open terminal
+---
+PAGE 19
+Initialise your project with Expo
+•Type this exactly into terminal and follow 
+the instructions onscreen. You only need 
+to do this once for every project
+npx create -expo -app -t expo -template -
+blank -typescript
+•Follow the steps!
+---
+PAGE 20
+
+---
+PAGE 21
+Success!
+
+---
+PAGE 22
+When it is all done
+
+---
+PAGE 23
+https://expo.dev/go
+Type:     npx expo start --tunnel
+Download the Expo Go app on your 
+device. Use this link to get the LATEST 
+version: https://expo.dev/go
+Then scan the QR code on your 
+phone to launch your app!
+---
+PAGE 24
+Now...Android
+
+---
+--- MAST5112_Lecture_2S_V2.pdf ---
+pages 13
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Let's Make an App
+•Create a GitHub repo!!!
+•Clone the repo
+•Open the cloned folder in VS Code
+•Open integrated terminal
+•npx create -expo -app -t expo -template -blank -typescript
+
+---
+PAGE 3
+Are you here yet?
+command:     npx expo start
+
+---
+PAGE 4
+Open App.tsx
+---
+PAGE 5
+Make Changes
+
+---
+PAGE 6
+Tags
+
+---
+PAGE 7
+Learn More About Tags
+https://reactnative.dev/docs/intro -react -
+native -components
+
+---
+PAGE 8
+You should see:
+
+---
+PAGE 9
+Now Add:
+
+---
+PAGE 10
+Why is it not working???
+---
+PAGE 11
+It won't work unless we add:
+
+---
+PAGE 12
+Add a Button
+
+---
+PAGE 13
+ICE Task
+•Commit everything we have 
+done so far and submit!
+
+---
+--- MAST5112_Lecture_3S_V2.pdf ---
+pages 15
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Program Structure•What?
+•Why?
+•Where?
+•How?
+---
+PAGE 3
+User Interface
+---
+PAGE 4
+Fundamental Components
+<View> is a container that can contain other components.
+<Text> displays text.
+<Image> displays an image.
+<ScrollView> is a container that can scroll.
+<TextInput> allows the user to enter text.
+---
+PAGE 5
+Everything 
+is a View
+•Every function can 
+only accept one 
+view component.
+•However, every 
+component can be 
+wrapped in a 
+singular view.
+
+---
+PAGE 6
+Adding New StylesIn the App.tsx file, delete all the existing styles so we can start 
+defining our own (shown below).
+
+---
+PAGE 7
+Make sure you specify!!!
+
+---
+PAGE 8
+Customize Further
+Try and get to this point on your own:
+
+---
+PAGE 9
+Add an Image...GO!•Add a new image tag to your code wherever 
+you’d like
+•Find and download a png
+•Create a new img folder directory inside your 
+app
+•Place the image in the file
+---
+PAGE 10
+Answer
+
+---
+PAGE 11
+•The image is inside a view so 
+that we can centre it. 
+•Here is the mainPicture style 
+responsible for centring :
+
+---
+PAGE 12
+Result
+
+---
+PAGE 13
+Need Help with 
+Styling?
+
+---
+PAGE 14
+Layouts: Flex
+
+---
+PAGE 15
+Justify Content
+
+---
+--- MAST5112_Lecture_4S_V2.pdf ---
+pages 19
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Handling Input
+•Flexbox allows us to control the 
+flex direction of components
+•Default is columns, can be 
+changed to rows
+
+---
+PAGE 3
+Revision
+
+---
+PAGE 4
+Storing User Input
+We can work 
+with useState() 
+to store and set 
+variablesThese must exist 
+outside of our 
+return but inside 
+our App functionDon’t forget the 
+import from 
+‘react’
+
+---
+PAGE 5
+Set these using RN Listeners
+
+---
+PAGE 6
+Button Press and Logging
+---
+PAGE 7
+Use Logging to Print 
+Updates
+•Now, every time we launch the 
+app, a new log will appear
+
+---
+PAGE 8
+Print the User’s Name on Button Press
+
+---
+PAGE 9
+ICE Task: Figure 
+out how to add•Auto capitalisation
+•Autocomplete
+•Forcing input to be text only
+---
+PAGE 10
+Navigating to Another Screen
+---
+PAGE 11
+•We need to install dependencies 
+first!
+npm install @react -navigation/native 
+@react -navigation/native -stack
+•Then
+npx expo install react -native -screens 
+react -native -safe -area -context
+---
+PAGE 12
+Importimport {NavigationContainer }from '@r
+eact -navigation/native';
+import {createNativeStackNavigator }fr
+om '@react -navigation/native -stack';
+---
+PAGE 13
+Wrap our Entire View in the Navigation Tag
+
+---
+PAGE 14
+Errors?
+Stop your npx 
+expo with Ctrl 
++ CClear the 
+cache with npx 
+expo start -c
+---
+PAGE 15
+Creating a Stack Navigator to Move Between Different 
+Screens
+Move the code for 
+the first screen out 
+of the app function 
+and give it a name 
+of its own.1
+Rename 
+the const and turn 
+it into a function2
+See next slide:3
+---
+PAGE 16
+
+---
+PAGE 17
+Redo App Function
+
+---
+PAGE 18
+Lost?
+Check the MM on page 39 -40 to see the entire code from 
+top to bottom so far!
+---
+PAGE 19
+Now we have a 
+Navigation Bar
+
+---

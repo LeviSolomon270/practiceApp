@@ -1,0 +1,67 @@
+--- MAST5112_Lecture_1S_V2.pdf ---
+pages 24
+PAGE 1
+Mobile App Scripting
+MAST5112
+---
+PAGE 2
+But First...REFERENCING!!!
+
+---
+PAGE 3
+AI Disclosure
+
+---
+--- MAST5112_Lecture_2S_V2.pdf ---
+pages 13
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Let's Make an App
+•Create a GitHub repo!!!
+•Clone the repo
+•Open the cloned folder in VS Code
+•Open integrated terminal
+•npx create -expo -app -t expo -template -blank -typescript
+
+---
+PAGE 3
+Are you here yet?
+command:     npx expo start
+
+---
+--- MAST5112_Lecture_3S_V2.pdf ---
+pages 15
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Program Structure•What?
+•Why?
+•Where?
+•How?
+---
+PAGE 3
+User Interface
+---
+--- MAST5112_Lecture_4S_V2.pdf ---
+pages 19
+PAGE 1
+Mobile App Scripting
+Sasha Heyburgh: sheyburgh@iie.ac.za
+---
+PAGE 2
+Handling Input
+•Flexbox allows us to control the 
+flex direction of components
+•Default is columns, can be 
+changed to rows
+
+---
+PAGE 3
+Revision
+
+---
