@@ -11,9 +11,17 @@ import {
 } from 'react-native';
 import { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const Stack = createNativeStackNavigator();
+type RootStackParamList = {
+  Home: undefined;
+  ViewDetails: {
+    NameSend: string;
+    SurnameSend: string;
+  };
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const nameSuggestions = [
   'Alice',
@@ -41,7 +49,10 @@ const surnameSuggestions = [
   'Jackson',
 ];
 
-function HomeScreen({ navigation }: { navigation: any }) {
+type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type ViewDetailsProps = NativeStackScreenProps<RootStackParamList, 'ViewDetails'>;
+
+function HomeScreen({ navigation }: MainScreenProps) {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [nameOptions, setNameOptions] = useState<string[]>([]);
@@ -150,7 +161,7 @@ function HomeScreen({ navigation }: { navigation: any }) {
   );
 }
 
-function SummaryScreen({ route }: { route: any }) {
+function SummaryScreen({ route }: ViewDetailsProps) {
   const { name, surname } = route.params ?? { name: '', surname: '' };
 
   return (
