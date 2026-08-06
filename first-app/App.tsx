@@ -1,3 +1,4 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import {
   StyleSheet,
@@ -8,17 +9,18 @@ import {
   Image,
   TouchableOpacity,
   ScrollView,
+  Animated,
 } from 'react-native';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator, NativeStackScreenProps } from '@react-navigation/native-stack';
+import {
+  createNativeStackNavigator,
+  NativeStackScreenProps,
+} from '@react-navigation/native-stack';
 
 type RootStackParamList = {
   Home: undefined;
-  ViewDetails: {
-    NameSend: string;
-    SurnameSend: string;
-  };
+  Summary: { name: string; surname: string } | undefined;
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -48,11 +50,55 @@ const surnameSuggestions = [
   'Thomas',
   'Jackson',
 ];
+interface FadeInViewProps {
+  children: React.ReactNode;
+  style?: any;
+  duration?: number;
+  translateY?: number;
+}
 
-type MainScreenProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
-type ViewDetailsProps = NativeStackScreenProps<RootStackParamList, 'ViewDetails'>;
+const FadeInView = ({ children, style, duration = 3000, translateY = 0 }: FadeInViewProps) => {
+  const fadeAnim = useRef(new Animated.Value(0)).current;
+  const translateAnim = useRef(new Animated.Value(translateY)).current;
 
-function HomeScreen({ navigation }: MainScreenProps) {
+  useEffect(() => {
+    const animations: Animated.CompositeAnimation[] = [
+      Animated.timing(fadeAnim, {
+        toValue: 1,
+        duration,
+        useNativeDriver: true,
+      }),
+    ];
+
+    if (translateY !== 0) {
+      animations.push(
+        Animated.timing(translateAnim, {
+          toValue: 0,
+          duration,
+          useNativeDriver: true,
+        }),
+      );
+    }
+
+    Animated.parallel(animations).start();
+  }, [fadeAnim, translateAnim, duration, translateY]);
+
+  return (
+    <Animated.View
+      style={[
+        style,
+        { opacity: fadeAnim, transform: [{ translateY: translateAnim }] },
+      ]}
+    >
+      {children}
+    </Animated.View>
+  );
+};
+
+type HomeProps = NativeStackScreenProps<RootStackParamList, 'Home'>;
+type SummaryProps = NativeStackScreenProps<RootStackParamList, 'Summary'>;
+
+function HomeScreen({ navigation }: HomeProps) {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [nameOptions, setNameOptions] = useState<string[]>([]);
@@ -81,11 +127,12 @@ function HomeScreen({ navigation }: MainScreenProps) {
 
   return (
     <ScrollView contentContainerStyle={styles.container} keyboardShouldPersistTaps="handled">
-      <Image source={require('./assets/phone.png')} style={styles.image} />
-      <Text style={styles.welcomeTxt}>Welcome to my app</Text>
-      <Text style={styles.bodyText}>Use the form below to enter your name and surname.</Text>
+      <FadeInView style={{ width: '100%' }} duration={1000} translateY={20}>
+        <Image source={require('./assets/phone.png')} style={styles.image} />
+        <Text style={styles.welcomeTxt}>Welcome to my app</Text>
+        <Text style={styles.bodyText}>Use the form below to enter your name and surname.</Text>
 
-      <View style={styles.inputGroup}>
+        <View style={styles.inputGroup}>
         <Text style={styles.boldText}>Enter Name</Text>
         <TextInput
           style={styles.input}
@@ -143,9 +190,9 @@ function HomeScreen({ navigation }: MainScreenProps) {
             ))}
           </View>
         )}
-      </View>
+        </View>
 
-      <View style={styles.buttonContainer}>
+        <View style={styles.buttonContainer}>
         <Button
           title="Add User"
           onPress={() => {
@@ -154,24 +201,27 @@ function HomeScreen({ navigation }: MainScreenProps) {
             navigation.navigate('Summary', { name, surname });
           }}
         />
-      </View>
+        </View>
 
-      <StatusBar style="auto" />
+        <StatusBar style="auto" />
+      </FadeInView>
     </ScrollView>
   );
 }
 
-function SummaryScreen({ route }: ViewDetailsProps) {
-  const { name, surname } = route.params ?? { name: '', surname: '' };
+function SummaryScreen({ route }: SummaryProps) {
+  const params = route.params ?? { name: '', surname: '' };
+  const name = params?.name ?? '';
+  const surname = params?.surname ?? '';
 
   return (
-    <View style={styles.container}>
+    <FadeInView style={styles.container} duration={800} translateY={10}>
       <Text style={styles.welcomeTxt}>Profile Summary</Text>
       <Text style={styles.bodyText}>Name: {name || 'Not entered yet'}</Text>
       <Text style={styles.bodyText}>Surname: {surname || 'Not entered yet'}</Text>
       <Text style={styles.noteText}>Press Back to update your details.</Text>
       <StatusBar style="auto" />
-    </View>
+    </FadeInView>
   );
 }
 
@@ -260,4 +310,6 @@ const styles = StyleSheet.create({
     width: '100%',
     marginTop: 20,
   },
+
+  
 });
